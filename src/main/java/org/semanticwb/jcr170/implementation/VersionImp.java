@@ -79,40 +79,26 @@ public class VersionImp extends SimpleNode implements Version
     {
         org.semanticwb.repository.Version versionNode = new org.semanticwb.repository.Version(node.getSemanticObject());
 
-        try
+        ArrayList<Version> versions = new ArrayList<Version>();
+        for (BaseNode baseNode : versionNode.getBaseSuccessors())
         {
-            ArrayList<Version> versions = new ArrayList<Version>();
-            for (BaseNode baseNode : versionNode.getBaseSuccessors())
-            {
-                VersionImp version = new VersionImp(baseNode, historyNode, session);
-                versions.add(version);
-            }
-            return versions.toArray(new Version[versions.size()]);
+            VersionImp version = new VersionImp(baseNode, historyNode, session);
+            versions.add(version);
         }
-        catch (SWBException swbe)
-        {
-            throw new RepositoryException(swbe);
-        }
+        return versions.toArray(new Version[versions.size()]);
     }
 
     @Override
     public Version[] getPredecessors() throws RepositoryException
     {
         org.semanticwb.repository.Version versionNode = new org.semanticwb.repository.Version(node.getSemanticObject());
-        try
+        ArrayList<Version> versions = new ArrayList<Version>();
+        for (BaseNode baseNode : versionNode.getBasePredecessors())
         {
-            ArrayList<Version> versions = new ArrayList<Version>();
-            for (BaseNode baseNode : versionNode.getBasePredecessors())
-            {
-                VersionImp version = new VersionImp(baseNode, historyNode, session);
-                versions.add(version);
-            }
-            return versions.toArray(new Version[versions.size()]);
+            VersionImp version = new VersionImp(baseNode, historyNode, session);
+            versions.add(version);
         }
-        catch (SWBException swbe)
-        {
-            throw new RepositoryException(swbe);
-        }
+        return versions.toArray(new Version[versions.size()]);
     }
 
     @Override

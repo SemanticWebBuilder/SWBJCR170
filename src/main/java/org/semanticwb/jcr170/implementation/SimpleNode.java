@@ -327,14 +327,7 @@ public class SimpleNode implements Node
             {
                 if (versionHistory == null && !node.getHistoryNode().getURI().equals(node.getSemanticObject().getURI()))
                 {
-                    try
-                    {
-                        versionHistory = new VersionHistoryImp(node.getHistoryNode(), session, this);
-                    }
-                    catch (SWBException e)
-                    {
-                        log.error(e);
-                    }
+                    versionHistory = new VersionHistoryImp(node.getHistoryNode(), session, this);
                 }
             }
             catch (Exception e)
