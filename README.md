@@ -1,2 +1,2 @@
 # SWBJCR170
-Implementación para SemanticWebBuilder del API Java Content Repository bajo la especificación JSR-170.
+JCR API implementation based on JSR-170 spec
